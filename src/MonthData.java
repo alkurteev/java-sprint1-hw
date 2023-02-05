@@ -4,42 +4,49 @@ public class MonthData {
     void printDaysAndStepsFromMonth() {
         // подсчет кол-ва пройденых шагов по дням
         for (int i = 0; i < 30; i++) {
-            System.out.println("(i + 1) + " день: " +  ");
-            // Вывод элементов массива в необходимом формате
+            System.out.println("(i + 1) + " день: " + days[i]");
         }
     }
 
     int sumStepsFromMonth() {
+        // подсчет суммы шагов месяц
         int sumSteps = 0;
         for (int i = 0; i < 30; i++) {
-            // подсчёт суммы элементов массива days[]
+            sumSteps = sumSteps + days[i];
         }
         return sumSteps;
     }
 
     int maxSteps() {
+        // максимально кол-во шагов в месяц
         int maxSteps = 0;
         for (int i = 0; i < 30; i++) {
-            int шаги = days[i];
-            if (шаги > maxSteps) {
-
+            if (days[i] > maxSteps) {
+            maxSteps = days[i];
             }
-            // поиск максимального элемента
         }
         return maxSteps;
     }
+        public double averageSteps() {
+        //среднее количество шагов
+        double sumStepsDouble = sumStepsFromMonth();
+        double monthToDataLengthDouble = days[].length;
+        return sumStepsDouble / monthToDataLengthDouble;
+    }
 
     int bestSeries(int goalByStepsPerDay) {
+        // поиск масимальной серии
         int bestSession = 0;
         int countBest = 0;
         for (int i = 0; i < 30; i++) {
-            final int шаги = days[i];
-            if (шаги >= goalByStepsPerDay) {
-                bestSession++;
+            if (days[i] >= goalByStepsPerDay) & (days[i - 1] >= goalByStepsPerDay) {
+                bestSession = bestSession++;
+                if (bestSession > countBest) {
+                    countBest = bestSession;
+                }
             } else {
-                // TODO устаносить countBest и очистить bestSession
+                bestSession = 1;
             }
-            // поиск максимальной серии
         }
         return countBest;
     }

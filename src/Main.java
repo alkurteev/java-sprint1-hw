@@ -12,11 +12,19 @@ public class Main {
             } else if (command.equals("2")) {
                 // установить цель
                 System.out.println("Введите новую цель:");
-                int goalByStepsPerDay = scanner.nextInt();
-                stepTracker.changeStepGoal();
+                int goalByStepsPerDayNew = scanner.nextInt();
+                stepTracker.changeStepGoal(goalByStepsPerDayNew);
             } else if (command.equals("3")) {
                 // вывод статистики
-                stepTracker.printStatistic();
+                System.out.println("Введите число месяца (0 - 11)");
+                stepTracker.printMonth();
+                int month = scanner.nextInt();
+                if (month < 0 || month > 11) {
+                    System.out.println("Введен не правильный номер месяца");
+                    return;
+                } else {
+                    stepTracker.printStatistic();
+                }
             } else if (command.equals("4")) {
                 System.out.println("Пока!");
                 scanner.close();
@@ -33,4 +41,5 @@ public class Main {
         System.out.println("Напечатать статистику за определенный месяц");
         System.out.println("Введите команду");
     }
+
 }

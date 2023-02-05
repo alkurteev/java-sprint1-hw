@@ -1,8 +1,12 @@
 public class Converter {
-    public double stepToKm(int sumStepsFromMonth) {
-        return 0;
+    double lenghtStep = 0.00075;
+    double calories = 0.05;
+    public double stepToKm(int step) {
+        double kilometrs =  step * lenghtStep;
+        return (int) kilometrs;
     }
-    public double steoToCl(int sumStepsFromMonth) {
-        return 0;
+    public double StepsToKilocalories(int step) {
+        double kilocalories =  step * calories;
+        return (int) kilocalories;
     }
 }
