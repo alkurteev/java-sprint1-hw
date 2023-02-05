@@ -4,7 +4,7 @@ public class MonthData {
     void printDaysAndStepsFromMonth() {
         // подсчет кол-ва пройденых шагов по дням
         for (int i = 0; i < 30; i++) {
-            System.out.println("(i + 1) + " день: " + days[i]");
+            System.out.println("" + (i + 1) + " день: " + days[i]");
         }
     }
 

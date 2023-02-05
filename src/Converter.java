@@ -1,12 +1,12 @@
 public class Converter {
     double lenghtStep = 0.00075;
     double calories = 0.05;
-    public double stepToKm(int step) {
-        double kilometrs =  step * lenghtStep;
+    double stepToKm(int sumSteps) {
+        double kilometrs =  sumSteps * lenghtStep;
         return (int) kilometrs;
     }
-    public double StepsToKilocalories(int step) {
-        double kilocalories =  step * calories;
+    double StepsToKilocalories(int Sumsteps) {
+        double kilocalories =  sumSteps * calories;
         return (int) kilocalories;
     }
 }

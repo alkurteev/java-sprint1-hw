@@ -53,13 +53,13 @@ public class StepTracker {
     MonthData monthData = monthToData[month];
     int[] days = monthData.days;
     days[day -1]=step;
-}
+
 
     void printStatistic() {
         System.out.println("Введите число месяца (0 - 11)");
         printMonth();
         MonthData monthData = monthToData[month];
-        System.out.println("Количество пройденных шагов по дням: " + monthData.printDaysAndStepsFromMonth());
+        monthData.printDaysAndStepsFromMonth();
         System.out.println("Общее количество шагов за месяц: " + monthData.sumStepsFromMonth());
         System.out.println("Максимальное пройденное количество шагов за месяц: " + monthData.maxSteps());
         System.out.println("Среднее количество шагов за месяц: " + monthData.averageSteps());
@@ -73,4 +73,6 @@ public class StepTracker {
     }
 
 }
-}
+
+
+

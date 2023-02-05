@@ -36,10 +36,10 @@ public class Main {
     }
     static void printMenu() {
         System.out.println("Введите команду");
-        System.out.println("Ввести количество шагов за определенный день");
-        System.out.println("Поставить цель по количеству шагов");
-        System.out.println("Напечатать статистику за определенный месяц");
-        System.out.println("Введите команду");
+        System.out.println("1 - Ввести количество шагов за определенный день");
+        System.out.println("2 - Поставить цель по количеству шагов");
+        System.out.println("3 - Напечатать статистику за определенный месяц");
+        System.out.println("4 - Выход");
     }
 
 }
