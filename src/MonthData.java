@@ -4,7 +4,6 @@ public class MonthData {
     int bestSession = 0;
     int countBest = 0;
     double averageSteps = 0;
-    int goalByStepsPerDay = 10000;
     int[] days = new int[30];
     int[] stepsFromMonth() {
         return days;
@@ -44,25 +43,23 @@ public class MonthData {
             }
             return averageSteps;
     }
-    void changeStepGoal(int goalByStepsPerDayNew) {
-        goalByStepsPerDay = goalByStepsPerDayNew;
-        System.out.println("Новая цель по количеству шагов в день: " + goalByStepsPerDay + " шагов");
-    }
-
-    int bestSeries(int[] days) {
+        int bestSeries(int goalByStepsPerDay) {
         // поиск масимальной серии
 
         for (int i = 0; i < 30; i++) {
             if (days[i] >= goalByStepsPerDay) {
                 ++bestSession;
-                if (bestSession > countBest) {
-                    countBest = bestSession;
-                }
-            } else {
+            }else {
                 bestSession = 0;
             }
+            if (countBest < bestSession) {
+                        countBest = bestSession;
+                }
+                return countBest;
+            }
         }
-        return countBest;
-    }
+
+            return bestSession;
+        }
 
  }

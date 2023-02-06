@@ -1,9 +1,10 @@
 public class StepTracker {
     Converter converter;
     MonthData[] monthToData;
-    int goalByStepsPerDay = 10000;
+    int goalByStepsPerDay;
 
     StepTracker() {
+        goalByStepsPerDay = 10000;
         converter = new Converter();
         monthToData = new MonthData[12];
         for (int i = 0; i < 12; i++) {
@@ -15,10 +16,11 @@ public class StepTracker {
         monthToData[month].stepsFromMonth()[day - 1] = steps;
     }
 
-    void changeStepGoal(int goalByStepsPerDay) {
-        this.goalByStepsPerDay = goalByStepsPerDay;
+    void changeStepGoal(int goalByStepsPerDayNew) {
+        goalByStepsPerDay = goalByStepsPerDayNew;
         System.out.println("Новая цель по количеству шагов в день: " + goalByStepsPerDay + " шагов");
     }
+
 
 
 
@@ -37,7 +39,7 @@ public class StepTracker {
         System.out.println("Среднее количество шагов за месяц: " + monthData.averageSteps(steps));
         System.out.println("Пройденная за месяц дистанции в км: " + converter.stepToKm(sumStepsFromMonth));
         System.out.println("Количество сожжённых килокалорий за месяц: " + converter.StepsToKilocalories(sumStepsFromMonth));
-        System.out.println("Лучшая серия: максимальное количество подряд идущих дней: " + monthData.bestSeries(steps));
+        System.out.println("Лучшая серия: максимальное количество подряд идущих дней: " + monthData.bestSeries(goalByStepsPerDay));
         System.out.println(); //дополнительный перенос строки
     }
     void printMonth() {
