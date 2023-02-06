@@ -2,44 +2,81 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        StepTracker stepTracker = new StepTracker(scanner);
-        while (true) {
+        StepTracker stepTracker = new StepTracker();
+
             printMenu();
-            String command = scanner.nextLine();
-            if (command.equals("1")) {
+            int command = scanner.nextInt();
+        while (command != 0) {
+            if (command == 1) {
                 // кол-во шагов в день
-                stepTracker.addNewNumberStepsPerDay();
-            } else if (command.equals("2")) {
-                // установить цель
-                System.out.println("Введите новую цель:");
-                int goalByStepsPerDayNew = scanner.nextInt();
-                stepTracker.changeStepGoal(goalByStepsPerDayNew);
-            } else if (command.equals("3")) {
-                // вывод статистики
-                System.out.println("Введите число месяца (0 - 11)");
-                stepTracker.printMonth();
-                int month = scanner.nextInt();
-                if (month < 0 || month > 11) {
-                    System.out.println("Введен не правильный номер месяца");
-                    return;
-                } else {
-                    stepTracker.printStatistic();
+                int month;
+                int day;
+                int stepsPerDay;
+
+                while (true) {
+                    System.out.println("Введите номер месяца (0 - 11)");
+                    stepTracker.printMonth();
+                    month = scanner.nextInt();
+                    if (month < 0 || month > 11) {
+                        System.out.println("Введите корректный номер месяца: 0-Январь, ..., 11-Декабрь");
+                    } else break;
                 }
-            } else if (command.equals("4")) {
-                System.out.println("Пока!");
-                scanner.close();
-                return;
+                while (true) {
+                    System.out.println("Введите день от 1 до 30 (включительно)");
+                    day = scanner.nextInt();
+                    if (day < 1 || day > 30) {
+                        System.out.println("Введите корректное число месяца: от 1 до 30");
+                    }
+                    else break;
+                }
+                while (true) {
+                    System.out.println("Введите количество шагов");
+                    stepsPerDay = scanner.nextInt();
+                    if (stepsPerDay < 0) {
+                        System.out.println("Количество шагов не может быть отрицательным");
+                    }
+                    else break;
+                }
+                stepTracker.saveSteps(month, day, stepsPerDay);
+            } else if (command == 2) {
+                // установить цель
+                int goalByStepsPerDayNew;
+                while (true) {
+                    System.out.println("Введите новую цель:");
+                    goalByStepsPerDayNew = scanner.nextInt();
+                    if (goalByStepsPerDayNew < 0) {
+                        System.out.println("Количество шагов не может быть отрицательным");
+                    } else break;
+                }
+                stepTracker.changeStepGoal(goalByStepsPerDayNew);
+            } else if (command == 3) {
+                // вывод статистики
+                int month;
+                while (true) {
+                    System.out.println("Введите число месяца (0 - 11)");
+                    stepTracker.printMonth();
+                    month = scanner.nextInt();
+                    if (month <= 0 || month > 11) {
+                        System.out.println("Введен не правильный номер месяца");
+                    }
+                    else break;
+                }
+                stepTracker.printStatistic(month);
             } else {
                 System.out.println("Такой команды нет");
             }
+            printMenu();
+            command = scanner.nextInt();
         }
-    }
+        System.out.println("Программа завершена!");
+        scanner.close();
+        }
     static void printMenu() {
         System.out.println("Введите команду");
         System.out.println("1 - Ввести количество шагов за определенный день");
         System.out.println("2 - Поставить цель по количеству шагов");
         System.out.println("3 - Напечатать статистику за определенный месяц");
-        System.out.println("4 - Выход");
+        System.out.println("0 - Выход");
     }
 
 }

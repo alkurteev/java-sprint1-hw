@@ -1,25 +1,33 @@
 public class MonthData {
+    int sumSteps = 0;
+    int maxSteps = 0;
+    int bestSession = 0;
+    int countBest = 0;
+    double averageSteps = 0;
     int[] days = new int[30];
+    int[] stepsFromMonth() {
+        return days;
+    }
 
-    void printDaysAndStepsFromMonth() {
+    void printDaysAndStepsFromMonth(int[] days) {
         // подсчет кол-ва пройденых шагов по дням
         for (int i = 0; i < 30; i++) {
-            System.out.println("" + (i + 1) + " день: " + days[i]");
+            System.out.print(i + 1 + " день: " + days[i] + ", ");
         }
     }
 
-    int sumStepsFromMonth() {
+    int sumStepsFromMonth(int[] days, int month) {
         // подсчет суммы шагов месяц
-        int sumSteps = 0;
+
         for (int i = 0; i < 30; i++) {
             sumSteps = sumSteps + days[i];
         }
         return sumSteps;
     }
 
-    int maxSteps() {
+    int maxSteps(int[] days) {
         // максимально кол-во шагов в месяц
-        int maxSteps = 0;
+
         for (int i = 0; i < 30; i++) {
             if (days[i] > maxSteps) {
             maxSteps = days[i];
@@ -27,27 +35,29 @@ public class MonthData {
         }
         return maxSteps;
     }
-        public double averageSteps() {
+        public double averageSteps(int[] days) {
         //среднее количество шагов
-        double sumStepsDouble = sumStepsFromMonth();
-        double monthToDataLengthDouble = days[].length;
-        return sumStepsDouble / monthToDataLengthDouble;
+
+            for (int i = 0; i < 30; i++) {
+                averageSteps = sumSteps / days.length;
+            }
+            return averageSteps;
     }
 
-    int bestSeries(int goalByStepsPerDay) {
+    int bestSeries(int[] days) {
         // поиск масимальной серии
-        int bestSession = 0;
-        int countBest = 0;
+
         for (int i = 0; i < 30; i++) {
-            if (days[i] >= goalByStepsPerDay) & (days[i - 1] >= goalByStepsPerDay) {
-                bestSession = bestSession++;
+            if (days[i] >= goalByStepsPerDay) {
+                ++bestSession;
                 if (bestSession > countBest) {
                     countBest = bestSession;
                 }
             } else {
-                bestSession = 1;
+                bestSession = 0;
             }
         }
         return countBest;
     }
-}
+
+ }
