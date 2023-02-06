@@ -48,18 +48,17 @@ public class MonthData {
 
         for (int i = 0; i < 30; i++) {
             if (days[i] >= goalByStepsPerDay) {
-                ++bestSession;
-            }else {
+                bestSession++;
+                if (bestSession > countBest) {
+                    countBest = bestSession;
+                }
+                if (countBest < bestSession) {
+                    countBest = bestSession;
+                }
+            } else {
                 bestSession = 0;
             }
-            if (countBest < bestSession) {
-                        countBest = bestSession;
-                }
-                return countBest;
+        }
+        return countBest;
             }
         }
-
-            return bestSession;
-        }
-
- }
