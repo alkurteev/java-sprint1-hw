@@ -40,15 +40,15 @@ public class Main {
                 stepTracker.saveSteps(month, day, stepsPerDay);
             } else if (command == 2) {
                 // установить цель
-                int goalByStepsPerDayNew;
+                int goalByStepsPerDay;
                 while (true) {
                     System.out.println("Введите новую цель:");
-                    goalByStepsPerDayNew = scanner.nextInt();
-                    if (goalByStepsPerDayNew < 0) {
+                    goalByStepsPerDay = scanner.nextInt();
+                    if (goalByStepsPerDay < 0) {
                         System.out.println("Количество шагов не может быть отрицательным");
                     } else break;
                 }
-                stepTracker.changeStepGoal(goalByStepsPerDayNew);
+                stepTracker.changeStepGoal(goalByStepsPerDay);
             } else if (command == 3) {
                 // вывод статистики
                 int month;

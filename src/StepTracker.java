@@ -15,10 +15,11 @@ public class StepTracker {
         monthToData[month].stepsFromMonth()[day - 1] = steps;
     }
 
-    void changeStepGoal(int goalByStepsPerDayNew) {
-        goalByStepsPerDay = goalByStepsPerDayNew;
-            System.out.println("Новая цель по количеству шагов в день: " + goalByStepsPerDay + " шагов");
-        }
+    void changeStepGoal(int goalByStepsPerDay) {
+        this.goalByStepsPerDay = goalByStepsPerDay;
+        System.out.println("Новая цель по количеству шагов в день: " + goalByStepsPerDay + " шагов");
+    }
+
 
 
 
