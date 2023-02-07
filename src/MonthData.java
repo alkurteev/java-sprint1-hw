@@ -1,61 +1,60 @@
 public class MonthData {
-    int sumSteps = 0;
-    int maxSteps = 0;
-    int countDaysBestSeries = 0;
-    int series = 0;
-    double averageSteps = 0;
     int[] days = new int[30];
-    int[] stepsFromMonth() {
-        return days;
-    }
 
-    void printDaysAndStepsFromMonth(int[] stepsByDayPerMonth) {
+    void printDaysAndStepsFromMonth() {
         // подсчет кол-ва пройденых шагов по дням
         for (int i = 0; i < 30; i++) {
-            System.out.print(i + 1 + " день: " + stepsByDayPerMonth[i] + ", ");
+            System.out.print(i + 1 + " день: " + days[i] + ", ");
         }
     }
 
-    int sumStepsFromMonth(int[] stepsByDayPerMonth, int month) {
+    int sumStepsFromMonth() {
         // подсчет суммы шагов месяц
-
+        int sumSteps = 0;
         for (int i = 0; i < 30; i++) {
-            sumSteps = sumSteps + stepsByDayPerMonth[i];
+            sumSteps = sumSteps + days[i];
         }
         return sumSteps;
     }
 
-    int maxSteps(int[] stepsByDayPerMonth) {
+    int maxSteps() {
         // максимально кол-во шагов в месяц
-
+        int maxSteps = 0;
         for (int i = 0; i < 30; i++) {
-            if (stepsByDayPerMonth[i] > maxSteps) {
-            maxSteps = stepsByDayPerMonth[i];
+            if (days[i] > maxSteps) {
+                maxSteps = days[i];
             }
         }
         return maxSteps;
     }
-        public double averageSteps(int[] stepsByDayPerMonth) {
+
+    public double averageSteps() {
         //среднее количество шагов
-
-            for (int i = 0; i < 30; i++) {
-                averageSteps = sumSteps / stepsByDayPerMonth.length;
-            }
-            return averageSteps;
+        double averageSteps = 0;
+                for (int i = 0; i < 30; i++) {
+            averageSteps += days[i];
+        }
+        return averageSteps;
     }
-        int bestSeries(int[] stepsByDayPerMonth) {
-        // поиск масимальной серии
 
+    int bestSeries(int goalByStepsPerDay) {
+        // поиск масимальной серии
+        int bestSession = 0;
+        int countBest = 0;
         for (int i = 0; i < 30; i++) {
-            if (stepsByDayPerMonth[i] >= goalByStepsPerDay) {
-                ++series;
-                if (series > countDaysBestSeries) {
-                    countDaysBestSeries = series;
+            if (days[i] > goalByStepsPerDay) {
+                bestSession++;
+            } else {
+                if (bestSession > countBest) {
+                    countBest = bestSession;
                 }
-            }else{
-                  series = 0;
-                }
-            }
-        return countDaysBestSeries;
+                bestSession = 0;
             }
         }
+        if (bestSession > countBest) {
+            countBest = bestSession;
+        }
+        return countBest;
+    }
+}
+
