@@ -42,7 +42,7 @@ public class MonthData {
         int bestSession = 0;
         int countBest = 0;
         for (int i = 0; i < 30; i++) {
-            if (days[i] > goalByStepsPerDay) {
+            if (days[i] >= goalByStepsPerDay) {
                 bestSession++;
             } else {
                 if (bestSession > countBest) {

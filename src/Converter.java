@@ -3,10 +3,10 @@ public class Converter {
     double calories = 0.05;
     double stepToKm(int steps) {
         double kilometrs =  steps * lenghtStep;
-        return steps*kilometrs;
+        return kilometrs;
     }
     double StepsToKilocalories(int steps) {
         double kilocalories =  steps * calories;
-        return steps*kilocalories;
+        return kilocalories;
     }
 }

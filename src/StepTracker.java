@@ -16,7 +16,7 @@ public class StepTracker {
     void addNewNumberStepsPerDay() {
         System.out.println("Введите номер месяца (0 - 11)");
         int mon = scanner.nextInt();
-        if (mon < 0 || mon > 11) {
+        if (mon < 0 || 11 < mon) {
             System.out.println("Введите корректный номер месяца: 0-Январь, ..., 11-Декабрь");
             return;
         }
@@ -28,8 +28,8 @@ public class StepTracker {
         }
         System.out.println("Введите количество шагов");
         int steps = scanner.nextInt();
-        if (steps < 0) {
-            System.out.println("Количество шагов не может быть отрицательным");
+        if (steps <= 0) {
+            System.out.println("Количество шагов не может быть отрицательным и нулевым");
 
             return;
         }
@@ -41,8 +41,8 @@ public class StepTracker {
     void changeStepGoal (){
         System.out.println("Введите новую цель:");
         int newStepGoal = scanner.nextInt();
-        if (newStepGoal < 0) {
-             System.out.println("Количество шагов не может быть отрицательным");
+        if (newStepGoal <= 0) {
+             System.out.println("Количество шагов не может быть отрицательным или нулевым");
              return;
             }
         goalByStepsPerDay = newStepGoal;
@@ -52,7 +52,7 @@ public class StepTracker {
         System.out.println("Введите число месяца (0 - 11)");
         printMonth();
         int mon = scanner.nextInt();
-        if (mon <= 0 || mon > 11) {
+        if (mon < 0 || mon > 11) {
             System.out.println("Введен не правильный номер месяца");
         return;
         }
