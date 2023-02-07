@@ -39,14 +39,13 @@ public class StepTracker {
         System.out.println("Среднее количество шагов за месяц: " + monthData.averageSteps(steps));
         System.out.println("Пройденная за месяц дистанции в км: " + converter.stepToKm(sumStepsFromMonth));
         System.out.println("Количество сожжённых килокалорий за месяц: " + converter.StepsToKilocalories(sumStepsFromMonth));
-        System.out.println("Лучшая серия: максимальное количество подряд идущих дней: " + monthData.bestSeries(goalByStepsPerDay));
+        System.out.println("Лучшая серия: максимальное количество подряд идущих дней: " + monthData.bestSeries(steps));
         System.out.println(); //дополнительный перенос строки
     }
     void printMonth() {
         System.out.println("Январь - 0, .... Декабрь - 11");
     }
-
-}
+    }
 
 
 
